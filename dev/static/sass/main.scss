@@ -1,3 +1,13 @@
+/* fix numb raleway */
+@font-face {
+    font-family: 'RalewayNumb';
+    font-style: normal;
+    font-weight: 500;
+    src: local(''),
+    url('../fonts/rawline-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/rawline-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* raleway-regular - cyrillic */
 @font-face {
     font-family: 'Raleway';
     font-style: normal;
@@ -5,4 +15,254 @@
     src: local(''),
     url('../fonts/raleway-v17-cyrillic-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
     url('../fonts/raleway-v17-cyrillic-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* raleway-500 - cyrillic */
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 500;
+    src: local(''),
+    url('../fonts/raleway-v17-cyrillic-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/raleway-v17-cyrillic-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+@font-face {
+    font-family: 'Cormorant Infant';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Cormorant Infant Regular'), local('CormorantInfant-Regular'),
+    url('../fonts/cormorant-infant-v8-cyrillic-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/cormorant-infant-v8-cyrillic-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* cormorant-infant-700 - cyrillic */
+@font-face {
+    font-family: 'Cormorant Infant';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Cormorant Infant Bold'), local('CormorantInfant-Bold'),
+    url('../fonts/cormorant-infant-v8-cyrillic-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/cormorant-infant-v8-cyrillic-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+$main-bg-color: #eaeeef;
+$accent-color: #70908B;
+
+$text-color: #195557;
+
+$transition-duration: .2s;
+
+body {
+    margin: 0;
+    padding: 0;
+    font: 14px/1.6 'Raleway', sans-serif;
+    color: $text-color;
+}
+
+.container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.row {
+    display: flex;
+
+    &_between {
+        justify-content: space-between;
+    }
+
+    &_v-center {
+        align-items: center;
+    }
+}
+
+.container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/*** .header ***/
+.header {
+    padding: 48px 0;
+    background-color: $main-bg-color;
+
+    &__logo {
+        margin-top: -35px;
+    }
+
+    &__nav {
+        margin-left: auto;
+        margin-right: 90px;
+    }
+
+    &__phone {
+        margin-right: 80px;
+    }
+}
+
+.reset-ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/*** .menu ***/
+.menu {
+    @extend .reset-ul;
+    font-family: 'Cormorant Infant', serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+
+    &__item {
+        position: relative;
+        display: inline-block;
+        margin: 0 43px;
+
+        &:hover .menu__sub-menu {
+            display: block;
+        }
+    }
+
+    &__link {
+        position: relative;
+        color: inherit;
+        text-decoration: none;
+
+        &::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            content: '';
+            width: 0;
+            height: 1px;
+            background-color: $text-color;
+            transition: $transition-duration;
+        }
+
+        &:hover {
+            &::after {
+                width: 100%;
+            }
+
+            &::before {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    &__link_icon {
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        &::before {
+            position: absolute;
+            top: 4px;
+            left: -12px;
+            content: '';
+            width: 7px;
+            height: 10px;
+            background: url(../img/svg/icon-menu.svg) no-repeat;
+            transition: $transition-duration;
+        }
+    }
+
+    &__sub-menu {
+        position: absolute;
+        top: 100%;
+        left: -24px;
+        padding-top: 10px;
+        display: none;
+    }
+}
+
+.sub-menu {
+    min-width: 170px;
+    padding: 20px 24px;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 20px #C2CCCA;
+    background-color: #fff;
+    border-radius: 8px;
+    @extend .reset-ul;
+
+    &__item {
+        margin-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/*** .phone ***/
+.phone {
+    display: flex;
+    align-items: center;
+    &__circle {
+        position: relative;
+        width: 69px;
+        height: 69px;
+        border-radius: 50%;
+        background: linear-gradient(1.36deg, #B0D3CE 12.29%, #FFEDCE 83.89%);
+        box-shadow: -4px -4px 20px #FFFFFF, 4px 4px 20px #CFD7D3;
+    }
+
+    &__icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 26px;
+        height: 26px;
+        margin-top: -13px;
+        margin-left: -13px;
+        fill: $text-color;
+    }
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+        font-weight: 500;
+    }
+
+    &__link {
+        line-height: 1;
+        color: inherit;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &__number {
+        font-family: 'RalewayNumb', sans-serif;
+        font-size: 22px;
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+/*** .cart ***/
+.cart {
+    position: relative;
+    padding-right: 6px;
+    &__icon {
+        width: 37px;
+        height: 33px;
+        fill: $text-color;
+    }
+
+    &__item-count {
+        position: absolute;
+        top: -6px;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 19px;
+        height: 19px;
+        line-height: 1;
+        background-color: #FFEDCD;
+        border-radius: 50%;
+    }
 }
