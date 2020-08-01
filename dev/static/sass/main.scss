@@ -85,6 +85,10 @@ body {
     clip: rect(0 0 0 0);
 }
 
+.wrapper {
+    overflow: hidden;
+}
+
 .container {
     max-width: 1800px;
     margin: 0 auto;
@@ -143,6 +147,40 @@ body {
         padding-top: 72px;
         padding-bottom: 130px;
         background-color: $main-bg-color;
+
+        &::after {
+            position: absolute;
+            bottom: -700px;
+            right: 0;
+            content: '';
+            width: 892px;
+            height: 1509px;
+            background: url(../img/radial-bg-right.png) no-repeat;
+            background-size: cover;
+        }
+
+        &::before {
+            position: absolute;
+            bottom: -350px;
+            left: -7px;
+            content: '';
+            width: 458px;
+            height: 566px;
+            background: url(../img/hedgehog-bg-left.png) no-repeat;
+            background-size: cover;
+
+            @include mqmax(1700) {
+                bottom: -286px;
+                width: 291px;
+                height: 390px;
+            }
+
+            @include mqmax(1400) {
+                bottom: -100px;
+                width: 230px;
+                height: 300px;
+            }
+        }
     }
     &__about {
         position: relative;
@@ -159,6 +197,21 @@ body {
             background-position: center 100%;
             background-size: cover;
         }
+
+        &::after {
+            position: absolute;
+            top: -24px;
+            right: 0;
+            content: '';
+            width: 456px;
+            height: 347px;
+            background: url(../img/hedgehog-bg-right.png) no-repeat;
+            @include mqmax(1400) {
+                top: -270px;
+                width: 362px;
+                height: 320px;
+            }
+        }
     }
 
     &__about-offset {
@@ -170,26 +223,54 @@ body {
 
     &__product {
         max-width: 1164px;
-        margin: 70px auto 150px;
+        margin: 80px auto 105px;
     }
 }
 
 /*** .header ***/
 .header {
+    position: relative;
     padding: 48px 0;
     background-color: $main-bg-color;
 
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+        z-index: 1;
+        width: 540px;
+        height: 570px;
+        background: url(../img/bg-under-logo.png) no-repeat;
+        background-size: cover;
+    }
+
     &__logo {
         margin-top: -35px;
+        fill: $text-color;
     }
 
     &__nav {
         margin-left: auto;
         margin-right: 90px;
+        @include mqmax(1400) {
+            margin-right: auto;
+        }
     }
 
     &__phone {
         margin-right: 80px;
+        @include mqmax(1400) {
+            margin-right: 24px;
+        }
+    }
+
+    &__cart,
+    &__phone,
+    &__nav,
+    &__logo {
+        position: relative;
+        z-index: 2;
     }
 }
 
@@ -207,10 +288,24 @@ body {
     font-size: 16px;
     text-transform: uppercase;
 
+    &_footer {
+        color: #fff;
+        .menu__link {
+            &::after {
+                background-color: #fff;
+            }
+        }
+    }
+
     &__item {
         position: relative;
         display: inline-block;
         margin: 0 43px;
+
+        @include mqmax(1400) {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
 
         &:hover {
             & .menu__sub-menu {
@@ -297,10 +392,14 @@ body {
 .phone {
     display: flex;
     align-items: center;
+    &_footer {
+        color: #fff;
+    }
     &__circle {
         position: relative;
         width: 69px;
         height: 69px;
+        flex-shrink: 0;
         border-radius: 50%;
         background: linear-gradient(1.36deg, #B0D3CE 12.29%, #FFEDCE 83.89%);
         box-shadow: -4px -4px 20px #FFFFFF, 4px 4px 20px #CFD7D3;
@@ -368,6 +467,8 @@ body {
 
 /*** .slogan ***/
 .slogan {
+    position: relative;
+    z-index: 1;
     text-align: center;
 
     &__title {
@@ -399,6 +500,8 @@ body {
 
 /*** .about ***/
 .about {
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     max-width: 860px;
@@ -493,7 +596,7 @@ body {
     position: relative;
     display: flex;
     justify-content: space-between;
-    padding: 53px 45px 59px 44px;
+    padding: 53px 45px 49px 60px;
     border-radius: 20px;
     box-shadow: inset 4px 4px 40px #F1F1F1;
 
@@ -520,7 +623,7 @@ body {
     }
 
     &__about {
-        max-width: 200px;
+        max-width: 180px;
     }
 
     &__title {
@@ -530,6 +633,10 @@ body {
         font-size: 40px;
         font-weight: 700;
         line-height: 1.2;
+    }
+
+    &__title_stroke {
+        -webkit-text-stroke: 1px #000;
     }
 
     &__text {
@@ -555,8 +662,8 @@ body {
 
     &__plus {
         position: absolute;
-        bottom: 0;
-        right: 0;
+        bottom: 5px;
+        right: 5px;
         z-index: 1;
         width: 27px;
         height: 27px;
@@ -567,6 +674,17 @@ body {
         position: absolute;
         top: 20px;
         right: 45px;
+    }
+
+    &__sale {
+        position: absolute;
+        top: -6px;
+        padding: 2px 8px;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        color: #ffff;
+        background-color: $accent-color;
     }
 }
 
@@ -585,7 +703,7 @@ body {
         display: flex;
     }
 }
-
+/*** .tooltip ***/
 .tooltip {
     position: absolute;
     top: 100%;
@@ -646,4 +764,74 @@ body {
     }
 
     &__new {}
+}
+
+/*** .social ***/
+.social {
+    @extend .reset-ul;
+
+    &__item {
+        display: inline-block;
+        margin-left: 9px;
+        margin-right: 9px;
+    }
+
+    &__icon {
+        width: 30px;
+        height: 30px;
+        fill: #fff;
+        transition: $transition-duration;
+
+        &:hover {
+            fill: $text-color;
+        }
+    }
+}
+/*** .footer ***/
+.footer {
+    position: relative;
+    padding: 49px 0 30px;
+    background-color: $accent-color;
+
+    &__logo {
+        fill: #fff;
+    }
+
+    &__menu {
+        margin-left: auto;
+    }
+
+    &__social {
+        margin-left: 60px;
+        margin-right: 46px;
+    }
+
+    &::after {
+        position: absolute;
+        top: -384px;
+        left: -183px;
+        content: '';
+        width: 431px;
+        height: 431px;
+        z-index: -1;
+        border-radius: 50%;
+        border: 110px solid #f8fafb;
+    }
+
+    &::before {
+        position: absolute;
+        top: -185px;
+        right: -206px;
+        content: '';
+        width: 243px;
+        height: 243px;
+        z-index: -1;
+        border-radius: 50%;
+        border: 64px solid #f8fafb;
+    }
+}
+
+.copy {
+    font-size: 9px;
+    color: #fff;
 }
