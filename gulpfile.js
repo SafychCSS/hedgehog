@@ -22,5 +22,5 @@ $.gulp.task('default', $.gulp.series(
 ));
 
 $.gulp.task('build', $.gulp.series('clean',
-  $.gulp.parallel('sass:build', 'html', 'scripts', 'font', 'img:build')
+  $.gulp.parallel('sass:build', 'html', 'scripts', 'font')
 ));
