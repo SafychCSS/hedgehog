@@ -31,7 +31,7 @@
     "gulp-svgmin": "^2.1.0",
     "gulp-tinypng": "^1.0.2",
     "gulp.spritesmith": "^6.9.0",
-    "node-sass": "^4.10.0"
+    "node-sass": "^7.0.0"
   },
   "dependencies": {
     "cryptiles": "^4.1.3",
